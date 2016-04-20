@@ -2,8 +2,9 @@
 function post_install(){
     mkdir -p ${HOME}/.fonts
     mkdir -p ${HOME}/.fonts.conf.d/
-    ln -s ${PEARL_PKGDIR}/module/font/PowerlineSymbols.otf ${HOME}/.fonts
-    fc-cache -vf ${HOME}/.fonts
+    local fonts_file="${PEARL_PKGDIR}/module/font/PowerlineSymbols.otf"
+    [ -f "$fonts_file" ] || ln -s "$fonts_file" "${HOME}/.fonts"
+    fc-cache -vf "${HOME}/.fonts"
 
     cp ${PEARL_PKGDIR}/module/font/10-powerline-symbols.conf ${HOME}/.fonts.conf.d/
 
