@@ -1,5 +1,5 @@
 
-set rtp+=$PEARL_HOME/packages/pearl/powerline/module/powerline/bindings/vim/
+set rtp+=$PEARL_PKGVARDIR/powerline/powerline/bindings/vim/
 
 " Always show statusline
 set laststatus=2
