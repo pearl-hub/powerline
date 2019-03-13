@@ -10,7 +10,7 @@ function post_install(){
         local fonts_file="${PEARL_PKGVARDIR}/powerline/font/PowerlineSymbols.otf"
         if [[ -f "$fonts_file" ]]
         then
-            ln -s "$fonts_file" "${HOME}/.fonts/"
+            link_to "$fonts_file" "${HOME}/.fonts/PowerlineSymbols.otf"
         else
             warn "Powerline symbols in powerline source code not found."
         fi
@@ -45,7 +45,7 @@ function pre_remove(){
     if command -v fc-cache &> /dev/null
     then
         rm -f "${HOME}/.fonts/PowerlineSymbols.otf"
-        fc-cache -vf ${HOME}/.fonts
+        fc-cache -vf ${HOME}/.fonts || warn "fc-cache command did not work. Skipping the configuration of fonts..."
         rm -f "${HOME}/.fonts.conf.d/10-powerline-symbols.conf"
     fi
 
